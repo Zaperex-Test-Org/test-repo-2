@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Test Component 2
+  annotations:
+    backstage.io/kubernetes-id: Test Component 2
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Zaperex-Test-Org/test-repo-2
+spec:
+  type: website
+  lifecycle: production
+  owner: user:default/zaperex
