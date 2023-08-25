@@ -18,10 +18,4 @@ spec:
   type: website
   system: janus-idp
   owner: janus-authors
-  lifecycle: production
-  dependsOn:
-    - resource:pgdb
-    - resource:argocd
-    - resource:obc
-    - resource:keycloak
-    - resource:github
+  lifecycle: development
