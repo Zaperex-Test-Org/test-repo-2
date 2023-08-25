@@ -12,7 +12,7 @@ metadata:
       url: https://www.youtube.com/
   annotations:
     github.com/project-slug: Zaperex-Test-Org/test-repo
-    backstage.io/kubernetes-id: developer-hub
+    backstage.io/kubernetes-id: janus-idp
     janus-idp.io/tekton-enabled: 'true'
 spec:
   type: website
