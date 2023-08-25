@@ -1,12 +1,27 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Test Component 2
+  name: test-2
+  title: test-2.0
+  description: |
+    This is a test repo for Backstage
+  links:
+    - title: My Github Org
+      url: https://github.com/Zaperex-Test-Org
+    - title: Youtube
+      url: https://www.youtube.com/
   annotations:
-    backstage.io/kubernetes-id: Test Component 2
-    backstage.io/techdocs-ref: dir:.
-    github.com/project-slug: Zaperex-Test-Org/test-repo-2
+    github.com/project-slug: Zaperex-Test-Org/test-repo
+    backstage.io/kubernetes-id: developer-hub
+    janus-idp.io/tekton-enabled: 'true'
 spec:
   type: website
+  system: janus-idp
+  owner: janus-authors
   lifecycle: production
-  owner: user:default/zaperex
+  dependsOn:
+    - resource:pgdb
+    - resource:argocd
+    - resource:obc
+    - resource:keycloak
+    - resource:github
