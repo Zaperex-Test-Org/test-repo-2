@@ -11,7 +11,7 @@ metadata:
     - title: Youtube
       url: https://www.youtube.com/
   annotations:
-    github.com/project-slug: Zaperex-Test-Org/test-repo
+    github.com/project-slug: Zaperex-Test-Org/test-repo-2
     backstage.io/kubernetes-id: janus-idp
     janus-idp.io/tekton-enabled: 'true'
 spec:
