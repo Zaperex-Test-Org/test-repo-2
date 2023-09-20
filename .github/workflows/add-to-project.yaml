@@ -1,0 +1,14 @@
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - labeled
+      - unlabeled
+
+jobs:
+  call-shared-workflow:
+    if: ${{ github.event.label.name == 'status/triage' }}
+    uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
+    with:
+      project_id: 1
