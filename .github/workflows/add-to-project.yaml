@@ -15,7 +15,7 @@ jobs:
         id: app-token
         with:
           app_id: ${{ vars.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          privateKey: ${{ secrets.APP_PRIVATE_KEY }}
       - uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
         with:
           project_id: $ {{ env.PROJECT_ID }}}
