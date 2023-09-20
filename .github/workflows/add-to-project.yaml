@@ -3,9 +3,20 @@ on:
     types:
       - labeled
 
+env:
+  TRIAGE_LABEL: status/triage
+  PROJECT_ID: 1
+
 jobs:
-  call-shared-workflow:
-    if: ${{ github.event.label.name == 'status/triage' }}
-    uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
-    with:
-      project_id: 1
+  add-to-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v1.2.1
+        id: app-token
+        with:
+          app_id: ${{ vars.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
+        with:
+          project_id: $ {{ env.PROJECT_ID }}}
+          project-token: ${{ secrets.project-token }}
