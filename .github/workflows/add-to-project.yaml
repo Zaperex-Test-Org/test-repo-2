@@ -16,8 +16,8 @@ jobs:
           app_id: ${{ vars.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
           revoke: true
-      - name: Store token
-        run: echo "Token: ${{ steps.generate_token.outputs.token }}"
+    outputs:
+      token: ${{ steps.generate_token.outputs.token }}
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
