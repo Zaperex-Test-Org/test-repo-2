@@ -12,11 +12,13 @@ jobs:
     name: Generate token
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@v1.2.1
-        id: app-token
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v2.1.0
         with:
           app_id: ${{ vars.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          revoke: true
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
