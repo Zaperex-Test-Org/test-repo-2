@@ -20,5 +20,5 @@ jobs:
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
-      project_id: $ {{ env.PROJECT_ID }}}
+      project_id: ${{ env.PROJECT_ID }}}
       project-token: ${{ needs.generate-token.outputs.token }}
