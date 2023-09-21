@@ -20,7 +20,9 @@ jobs:
       token: ${{ steps.generate_token.outputs.token }}
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
+    env:
+      GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
     with:
       project_id: 1
-      project-token: ${{ needs.generate-token.outputs.token }}
+      project-token: $GITHUB_TOKEN
     needs: generate-token
