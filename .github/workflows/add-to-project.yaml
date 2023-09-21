@@ -7,7 +7,7 @@ env:
   PROJECT_ID: 1
 jobs:
   generate-token:
-    if: ${{ github.event.label.name == env.TRIAGE_LABEL }}
+    if: ${{ github.event.label.name == $TRIAGE_LABEL }}
     name: Generate token
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +21,6 @@ jobs:
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
-      project_id: ${{ env.PROJECT_ID }}}
+      project_id: ${{ $PROJECT_ID }}}
       project-token: ${{ needs.generate-token.outputs.token }}
     needs: generate-token
