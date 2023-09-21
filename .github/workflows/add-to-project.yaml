@@ -17,10 +17,8 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
           revoke: true
   add-to-project:
-    env:
-      PROJECT_ID: 1
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
-      project_id: ${{ env.PROJECT_ID }}
+      project_id: 1
       project-token: ${{ needs.generate-token.outputs.token }}
     needs: generate-token
