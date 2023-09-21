@@ -22,7 +22,7 @@ jobs:
           # gh issue --repo ${{ github.event.repository.full_name }} edit ${{ github.event.issue.html_url }} --add-label ${{ env.TRIAGE_LABEL }}
           echo ${{ github.event.issue }}
           # add issue to the project
-          gh project item-add ${{ inputs.project_id }} --owner ${{ github.event.org .login }} --url ${{ github.event.issue.html_url }}
+          gh project item-add ${{ inputs.project_id }} --owner ${{ github.event.org.login }} --url ${{ github.event.issue.html_url }}
         env:
           # token needs to have read/write permision for projects on org level and issues on repo level
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
