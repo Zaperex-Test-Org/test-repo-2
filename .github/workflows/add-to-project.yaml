@@ -5,7 +5,6 @@ on:
 
 jobs:
   add-to-project:
-    if: ${{ github.event.label.name }} == "status/triage"
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
       project_id: 1
