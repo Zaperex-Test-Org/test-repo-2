@@ -4,25 +4,7 @@ on:
       - labeled
 
 jobs:
-  generate-token:
-    if: ${{ github.event.label.name == 'status/triage'}}
-    name: Generate token
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@v2.1.0
-        with:
-          app_id: ${{ vars.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-          revoke: true
-    outputs:
-      token: ${{ steps.generate_token.outputs.token }}
   add-to-project:
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
-    env:
-      GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
     with:
       project_id: 1
-      project-token: $GITHUB_TOKEN
-    needs: generate-token
