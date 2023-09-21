@@ -2,29 +2,15 @@ on:
   issues:
     types:
       - labeled
+
 env:
   TRIAGE_LABEL: status/triage
   PROJECT_ID: 1
+
 jobs:
   add-to-project:
-    name: Manage incoming issues
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate token
-        id: generate-token
-        uses: tibdex/github-app-token@v2.1.0
-        with:
-          app_id: ${{ vars.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-          revoke: true
-      - run: |
-          # make sure that label exists
-          # gh label --repo ${{ github.event.repository.full_name }} create -f ${{ env.TRIAGE_LABEL }} -c 000000 -d "Issue needs triage"
-          # # add label to issue
-          # gh issue --repo ${{ github.event.repository.full_name }} edit ${{ github.event.issue.html_url }} --add-label ${{ env.TRIAGE_LABEL }}
-          echo ${{ github.event.issue }}
-          # add issue to the project
-          gh project item-add ${{ env.PROJECT_ID }} --owner ${{ github.event.organization.login }} --url ${{ github.event.issue.html_url }}
-        env:
-          # token needs to have read/write permision for projects on org level and issues on repo level
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+    uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
+    with:
+      project_id: $ {{ env.PROJECT_ID }}}
+      project-token: ${{ secrets.project-token }}
+    secrets: inherit
