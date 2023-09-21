@@ -3,14 +3,10 @@ on:
     types:
       - labeled
 
-env:
-  TRIAGE_LABEL: status/triage
-  PROJECT_ID: 1
-
 jobs:
   add-to-project:
-    if: ${{ github.event.label.name  ==  env.TRIAGE_LABEL }}
+    if: ${{ github.event.label.name  ==  status/triage }}
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
-      project_id: $ {{ env.PROJECT_ID }}}
+      project_id: 1
     secrets: inherit
