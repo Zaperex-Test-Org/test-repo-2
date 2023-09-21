@@ -2,12 +2,10 @@ on:
   issues:
     types:
       - labeled
-env:
-  TRIAGE_LABEL: status/triage
-  PROJECT_ID: 1
+
 jobs:
   generate-token:
-    if: ${{ github.event.label.name == env.TRIAGE_LABEL }}
+    if: ${{ github.event.label.name == 'status/triage'}}
     name: Generate token
     runs-on: ubuntu-latest
     steps:
@@ -19,6 +17,8 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
           revoke: true
   add-to-project:
+    env:
+      PROJECT_ID: 1
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
       project_id: ${{ env.PROJECT_ID }}
