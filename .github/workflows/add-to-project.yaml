@@ -8,7 +8,7 @@ env:
   PROJECT_ID: 1
 
 jobs:
-  generate-token:
+  add-to-project:
     name: Generate token
     runs-on: ubuntu-latest
     steps:
@@ -19,8 +19,7 @@ jobs:
           app_id: ${{ vars.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
           revoke: true
-  add-to-project:
-    uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
-    with:
-      project_id: ${{ env.PROJECT_ID }}}
-      project-token: ${{ needs.generate-token.outputs.token }}
+      - uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
+        with:
+          project_id: ${{ env.PROJECT_ID }}}
+          project-token: ${{ needs.generate-token.outputs.token }}
