@@ -9,7 +9,7 @@ env:
 
 jobs:
   add-to-project:
-    if: ${ github.event.label.name  ==  env.TRIAGE_LABEL }
+    if: ${{ github.event.label.name  ==  env.TRIAGE_LABEL }}
     uses: Zaperex-Test-Org/shared-workflows/.github/workflows/add-to-project.yaml@main
     with:
       project_id: $ {{ env.PROJECT_ID }}}
