@@ -25,6 +25,7 @@ int main(){
 
             // You can process the user input here as needed
             printf("You entered: %s", input);
+            fflush(stdout); // Flush the stdout buffer to ensure the output is seen by the read end of the pipe
         }
     }
     else{
@@ -35,6 +36,7 @@ int main(){
             close(fd[WRITE]);
             for (int i = 0; i < 15; i++){
                 printf("%d\n", i);
+                fflush(stdout); // Flush the stdout buffer to ensure the output is seen by the read end of the pipe
                 sleep(1);
             }
             // execlp("cat", "cat", "./.github/workflows/add-to-project.yaml", NULL);
@@ -57,6 +59,7 @@ int main(){
             printf("Hello World\n");
             while (fgets(input, sizeof(input), stdin) != NULL) {
                 fprintf(file, "%s", input); // Write the input to the file
+                fflush(file); // Flush the file buffer
             }
             // Close the file
             fclose(file);
